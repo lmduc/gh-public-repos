@@ -8,7 +8,11 @@
   = label_tag 'Per page'
   = text_field_tag 'per_page', @per_page
   = submit_tag 'Search'
-%br
-- @repositories.each_with_index do |repository, index|
-  %h4= "#{index + 1}. #{repository.full_name}"
-  %div= "ID: #{repository.id} - Full name: #{repository.full_name} - URL: #{repository.html_url}"
+- if @error_messages
+  - @error_messages.each do |message|
+    %div= message
+- if @repositories
+  %br
+  - @repositories.each_with_index do |repository, index|
+    %h4= "#{index + 1}. #{repository.full_name}"
+    %div= "ID: #{repository.id} - Full name: #{repository.full_name} - URL: #{repository.html_url}"

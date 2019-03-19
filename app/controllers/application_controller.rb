@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   DEFAULT_PER_PAGE = 10.freeze
   MAX_PER_PAGE = 30.freeze
 
+  include ExceptionConcern
+
   private
 
   def page
