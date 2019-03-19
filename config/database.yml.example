@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  host: localhost
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  <<: *default
+  database: <%= ENV['DB_NAME'] %>
+
+test:
+  <<: *default
+  database: <%= ENV['DB_NAME'] %>
+
+production:
+  url: <%= ENV['DB_URL'] %>
+  pool: <%= ENV['DB_POOL'] || 5 %>
+  reaping_frequency: <%= ENV['DB_REAPING_FREQUENCY'] || 10 %>
+  adapter: postgresql
+  variables:
+    statement_timeout: 0
