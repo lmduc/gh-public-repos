@@ -1,12 +1,14 @@
 module GithubService
   module Api
     class Repository
+      GITHUB_REPOSITORY_SEARCH_URL = "https://api.github.com/search/repositories".freeze
+
       TIMEOUT = 5.freeze
 
       def self.search_public(search:, page:, per_page:)
         Timeout::timeout(TIMEOUT) do
           response = HTTParty.get(
-            "https://api.github.com/search/repositories",
+            GITHUB_REPOSITORY_SEARCH_URL,
             query: {
               q: search,
               page: page,
