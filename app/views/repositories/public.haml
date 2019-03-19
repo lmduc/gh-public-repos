@@ -1,0 +1,9 @@
+%h1 GitHub Public Repositories
+%br
+= form_tag(public_repositories_path) do
+  = text_field_tag 'search_term'
+%br
+- @repositories.each_with_index do |repository, index|
+  %h3= "#{index + 1}. #{repository.full_name}"
+  %div= "ID: #{repository.id} - Full name: #{repository.full_name}"
+
