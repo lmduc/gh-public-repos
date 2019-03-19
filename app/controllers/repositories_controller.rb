@@ -1,10 +1,10 @@
 class RepositoriesController < ApplicationController
   def public
-    @search_term = search_term_param
     @page = page
     @per_page = per_page
 
     if request.post?
+      @search_term = search_term_param
       @repositories = github_client.public_repositories(
         search: search_term_param,
         page: page,
