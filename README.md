@@ -1,24 +1,9 @@
-# README
+## Development setup
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1. Run `bundle install` to install all the gems
 
-Things you may want to cover:
+2. Copy `config/database.yml.example` to `config/database.yml`. Set/replace the ENV VAR by the corresponding configuration in your local machine.
 
-* Ruby version
+3. Initialize the database and run migrations by the command: `rails db:create && rails db:migrate`
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+4. Start the rails server using `rails s`
