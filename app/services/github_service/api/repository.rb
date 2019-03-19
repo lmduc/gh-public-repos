@@ -6,8 +6,8 @@ module GithubService
       TIMEOUT = 5.freeze
 
       def self.search_public(search:, page:, per_page:)
-        Timeout::timeout(TIMEOUT) do
-          response = HTTParty.get(
+        response = Timeout::timeout(TIMEOUT) do
+          HTTParty.get(
             GITHUB_REPOSITORY_SEARCH_URL,
             query: {
               q: search,
@@ -15,7 +15,11 @@ module GithubService
               per_page: per_page
             }
           )
+        end
+        if response.success?
           JSON.parse(response.body)
+        else
+          raise GithubService::Api::FailedToFetch
         end
       end
     end
