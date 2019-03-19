@@ -1,9 +1,14 @@
 %h1 GitHub Public Repositories
 %br
 = form_tag(public_repositories_path) do
-  = text_field_tag 'search_term'
+  = label_tag 'Search term'
+  = text_field_tag 'search_term', @search_term
+  = label_tag 'Page'
+  = text_field_tag 'page', @page
+  = label_tag 'Per page'
+  = text_field_tag 'per_page', @per_page
+  = submit_tag 'Search'
 %br
 - @repositories.each_with_index do |repository, index|
-  %h3= "#{index + 1}. #{repository.full_name}"
-  %div= "ID: #{repository.id} - Full name: #{repository.full_name}"
-
+  %h4= "#{index + 1}. #{repository.full_name}"
+  %div= "ID: #{repository.id} - Full name: #{repository.full_name} - URL: #{repository.html_url}"

@@ -2,8 +2,13 @@ class RepositoriesController < ApplicationController
   def public
     if request.post?
       @repositories = github_client.public_repositories(
-        search: search_term_param
+        search: search_term_param,
+        page: page,
+        per_page: per_page
       )
+      @search_term = search_term_param
+      @page = page
+      @per_page = per_page
     elsif request.get?
       @repositories = []
     end

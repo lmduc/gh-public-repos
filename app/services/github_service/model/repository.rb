@@ -3,6 +3,8 @@ module GithubService
     class Repository
       def self.build(repositories)
         repositories.map { |r| new(r) }
+      rescue
+        []
       end
 
       attr_reader :id, :full_name, :html_url, :data
