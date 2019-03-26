@@ -1,3 +1,5 @@
+Live demo: https://gh-public-repos.herokuapp.com
+
 ## Development setup
 
 1. Run `bundle install` to install all the gems
